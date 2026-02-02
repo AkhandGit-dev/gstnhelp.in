@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 type FormValues = {
   name: string;
@@ -20,10 +21,19 @@ const LeadForm: React.FC = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm<FormValues>({ defaultValues: { caseType: 'Notice', preferredContact: 'Phone' } });
   const [loading, setLoading] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const onSubmit = async (data: FormValues) => {
     setLoading(true);
     setServerError(null);
+
+    if (!captchaToken) {
+      setServerError('Please complete the reCAPTCHA verification.');
+      setLoading(false);
+      return;
+    }
+
     try {
       const formData = new FormData();
       Object.entries(data).forEach(([k, v]) => {
@@ -35,10 +45,17 @@ const LeadForm: React.FC = () => {
         }
       });
 
-      // optional: attach reCAPTCHA token here
-      const res = await axios.post('/api/leads', formData, { headers: { 'Content-Type': 'multipart/form-data' } });
+      if (captchaToken) {
+        formData.append('recaptchaToken', captchaToken);
+      }
+
+      // Fix: Do NOT set Content-Type manually for FormData. 
+      // Axios/Browser will set it automatically with the correct boundary.
+      const res = await axios.post('/api/leads', formData);
       if (res.status === 201) {
         reset();
+        setCaptchaToken(null);
+        recaptchaRef.current?.reset();
         window.location.href = '/thank-you?ref=' + res.data.id;
       }
     } catch (err: any) {
@@ -110,7 +127,13 @@ const LeadForm: React.FC = () => {
         </select>
       </div>
 
-      {/* Placeholder for reCAPTCHA - implement with your site key on production */}
+      <div className="mt-4">
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+          onChange={(token) => setCaptchaToken(token)}
+        />
+      </div>
 
       {serverError && <p className="text-red-600">{serverError}</p>}
 
