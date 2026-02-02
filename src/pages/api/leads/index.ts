@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import formidable, { Fields, Files } from 'formidable';
+import formidable from 'formidable';
 import fs from 'fs';
 import path from 'path';
 import { prisma } from '../../../lib/prisma';
@@ -30,7 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (!fs.existsSync(UPLOAD_DIR)) fs.mkdirSync(UPLOAD_DIR, { recursive: true });
 
-    form.parse(req, async (err: any, fields: Fields, files: Files) => {
+    form.parse(req, async (err: any, fields: Record<string, any>, files: Record<string, any>) => {
       if (err) return res.status(500).json({ message: 'File upload error' });
 
       const recaptchaToken = typeof fields.recaptchaToken === 'string' ? fields.recaptchaToken : undefined;
