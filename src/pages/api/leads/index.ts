@@ -4,7 +4,6 @@ import fs from 'fs';
 import path from 'path';
 import { prisma } from '../../../lib/prisma';
 import { sendAdminNotification, sendUserThankYouEmail } from '../../../lib/mailer';
-import fetch from 'node-fetch';
 
 export const config = {
   api: { bodyParser: false }
