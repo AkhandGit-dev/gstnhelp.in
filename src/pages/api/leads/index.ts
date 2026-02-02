@@ -69,10 +69,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           if (f.size > MAX_BYTES) {
             return res.status(400).json({ message: 'One of the files exceeds 8MB limit' });
           }
-          if (f.type && !allowed.includes(f.type)) {
-            return res.status(400).json({ message: 'Unsupported file type: ' + f.type });
+          // Formidable v3 uses 'mimetype' and 'filepath'
+          const fileType = f.mimetype || f.type;
+          if (fileType && !allowed.includes(fileType)) {
+            return res.status(400).json({ message: 'Unsupported file type: ' + fileType });
           }
-          const filename = path.basename(f.path);
+          const filename = path.basename(f.filepath || f.path);
           docPaths.push('/uploads/' + filename);
         }
       }
