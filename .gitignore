@@ -1,0 +1,9 @@
+node_modules/
+.next/
+.env
+.env.local
+/public/uploads/
+/prisma/dev.db
+coverage/
+.vscode/
+.DS_Store
