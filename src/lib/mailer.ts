@@ -13,7 +13,12 @@ export async function sendAdminNotification(lead: any) {
     subject: `New GSTN Help lead: ${lead.caseType} — ${lead.name}`,
     html: `<p>New lead submitted</p><pre>${JSON.stringify(lead, null, 2)}</pre>`
   };
-  return sgMail.send(msg);
+  try {
+    return await sgMail.send(msg);
+  } catch (error: any) {
+    console.error('SendGrid Admin Notification Error:', JSON.stringify(error.response?.body, null, 2));
+    throw error;
+  }
 }
 
 export async function sendUserThankYouEmail(lead: any) {
@@ -24,5 +29,10 @@ export async function sendUserThankYouEmail(lead: any) {
     subject: `GSTN Help — We received your case`,
     html: `<p>Dear ${lead.name},</p><p>Thank you for submitting your case. Reference: ${lead.id}</p>`
   };
-  return sgMail.send(msg);
+  try {
+    return await sgMail.send(msg);
+  } catch (error: any) {
+    console.error('SendGrid User Notification Error:', JSON.stringify(error.response?.body, null, 2));
+    throw error;
+  }
 }
