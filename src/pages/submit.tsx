@@ -4,16 +4,18 @@ import LeadForm from '../components/LeadForm';
 
 const Submit = () => {
   return (
-    <div className="container mx-auto px-6 py-12">
+    <div className="min-h-screen bg-gray-50 py-12">
       <Head>
         <title>Submit a Case — GSTN Help</title>
         <meta name="description" content="Submit your GST case for a free review. Provide details and supporting documents for notices, refunds, ITC and audits." />
       </Head>
 
-      <h1 className="text-2xl font-bold">Submit your case</h1>
-      <p className="mt-2 text-gray-700">Provide as much detail and supporting documents as possible. We will review and contact you with a preliminary assessment.</p>
+      <div className="container mx-auto px-6 max-w-3xl">
+        <div className="text-center mb-8">
+          <h1 className="text-3xl font-bold text-gray-900">Submit your case</h1>
+          <p className="mt-2 text-gray-600">Provide as much detail and supporting documents as possible. We will review and contact you with a preliminary assessment.</p>
+        </div>
 
-      <div className="mt-6">
         <LeadForm />
       </div>
     </div>

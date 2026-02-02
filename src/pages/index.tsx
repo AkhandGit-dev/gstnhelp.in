@@ -15,7 +15,7 @@ const Home: React.FC = () => {
       <Hero />
 
       <section className="container mx-auto px-6 py-12">
-        <h2 className="text-2xl font-bold">Our Services</h2>
+        <h2 className="text-3xl font-bold text-center mb-10">Our Services</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
           <ServiceCard title="GST Notice Reply & Dispute Resolution" desc="Draft strategic replies and representation in notices and show-cause proceedings." price="₹20,000 - ₹70,000+" />
           <ServiceCard title="GST Refund Advisory & Filing Support" desc="Assist with refund claims, documentation and follow-up with tax authorities." price="₹10,000 - ₹50,000+" />
@@ -29,7 +29,7 @@ const Home: React.FC = () => {
 
       <section className="bg-gray-50 py-12">
         <div className="container mx-auto px-6">
-          <h2 className="text-2xl font-bold">Testimonials</h2>
+          <h2 className="text-3xl font-bold text-center mb-10">Client Testimonials</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
             <Testimonial name="A. Sharma" text="Resolved a complex refund issue within weeks. Highly recommend." />
             <Testimonial name="V. Gupta" text="Timely and professional response to GST notice." />
@@ -38,11 +38,11 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      <section className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <h2 className="text-xl font-bold">Get a free GST issue review</h2>
-            <p className="mt-2 text-gray-600">Submit your case details and our experts will contact you with a preliminary assessment.</p>
+      <section className="container mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div className="lg:sticky lg:top-8">
+            <h2 className="text-3xl font-bold text-gray-900">Get a free GST issue review</h2>
+            <p className="mt-4 text-lg text-gray-600 leading-relaxed">Submit your case details and our experts will contact you with a preliminary assessment. We handle data with strict confidentiality.</p>
           </div>
           <div>
             <LeadForm />
