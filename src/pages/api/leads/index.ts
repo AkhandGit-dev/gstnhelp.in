@@ -74,8 +74,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           if (fileType && !allowed.includes(fileType)) {
             return res.status(400).json({ message: 'Unsupported file type: ' + fileType });
           }
-          const filename = path.basename(f.filepath || f.path);
-          docPaths.push('/uploads/' + filename);
+          
+          const p = f.filepath || f.path;
+          if (p) {
+            const filename = path.basename(p);
+            docPaths.push('/uploads/' + filename);
+          }
         }
       }
 
