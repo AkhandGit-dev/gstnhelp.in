@@ -19,14 +19,21 @@ const getSingleValue = (val: string | string[] | undefined): string => {
 
 async function verifyRecaptcha(token: string | undefined) {
   const secret = process.env.RECAPTCHA_SECRET;
+  console.log('[reCAPTCHA] Secret configured:', !!secret); // Debug log
+
   if (!secret) return true; // if not configured, skip verification
-  if (!token) return false;
+
+  console.log('[reCAPTCHA] Token received:', token ? 'Yes (length: ' + token.length + ')' : 'No'); // Debug log
+
+  if (!token) return false; // Fail if secret exists but token doesn't
+
   const res = await fetch(`https://www.google.com/recaptcha/api/siteverify`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: `secret=${encodeURIComponent(secret)}&response=${encodeURIComponent(token)}`
   });
   const data = await res.json();
+  console.log('[reCAPTCHA] Google response:', data); // Debug log
   return data.success;
 }
 
@@ -38,6 +45,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     form.parse(req, async (err: any, fields: Record<string, any>, files: Record<string, any>) => {
       if (err) return res.status(500).json({ message: 'File upload error' });
+
+      console.log('[reCAPTCHA] Incoming fields:', Object.keys(fields)); // Debug log
 
       const recaptchaToken = getSingleValue(fields['g-recaptcha-response']) || getSingleValue(fields['token']) || getSingleValue(fields['recaptchaToken']);
       const recaptchaOk = await verifyRecaptcha(recaptchaToken);
