@@ -39,7 +39,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     form.parse(req, async (err: any, fields: Record<string, any>, files: Record<string, any>) => {
       if (err) return res.status(500).json({ message: 'File upload error' });
 
-      const recaptchaToken = getSingleValue(fields.recaptchaToken);
+      const recaptchaToken = getSingleValue(fields['g-recaptcha-response']) || getSingleValue(fields['token']) || getSingleValue(fields['recaptchaToken']);
       const recaptchaOk = await verifyRecaptcha(recaptchaToken);
       if (!recaptchaOk) return res.status(400).json({ message: 'reCAPTCHA verification failed' });
 
