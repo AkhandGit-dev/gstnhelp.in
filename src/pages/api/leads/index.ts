@@ -11,6 +11,12 @@ export const config = {
 
 const UPLOAD_DIR = process.env.UPLOAD_DIR || './public/uploads';
 
+// Helper to extract single value from Formidable v3 fields (which are arrays)
+const getSingleValue = (val: string | string[] | undefined): string => {
+  if (Array.isArray(val)) return val[0] || '';
+  return val || '';
+};
+
 async function verifyRecaptcha(token: string | undefined) {
   const secret = process.env.RECAPTCHA_SECRET;
   if (!secret) return true; // if not configured, skip verification
@@ -33,13 +39,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     form.parse(req, async (err: any, fields: Record<string, any>, files: Record<string, any>) => {
       if (err) return res.status(500).json({ message: 'File upload error' });
 
-      const recaptchaToken = typeof fields.recaptchaToken === 'string' ? fields.recaptchaToken : undefined;
+      const recaptchaToken = getSingleValue(fields.recaptchaToken);
       const recaptchaOk = await verifyRecaptcha(recaptchaToken);
       if (!recaptchaOk) return res.status(400).json({ message: 'reCAPTCHA verification failed' });
 
-      const phone = fields.phone as string;
-      const name = fields.name as string;
-      const caseType = fields.caseType as string;
+      const phone = getSingleValue(fields.phone);
+      const name = getSingleValue(fields.name);
+      const caseType = getSingleValue(fields.caseType);
 
       if (!phone || !name || !caseType) return res.status(400).json({ message: 'Missing required fields' });
 
@@ -48,7 +54,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const MAX_BYTES = 8 * 1024 * 1024; // 8MB
       const docPaths: string[] = [];
       if (files.files) {
-        const fileArr = Array.isArray(files.files) ? files.files : [files.files];
+        const rawFiles = files.files;
+        const fileArr = Array.isArray(rawFiles) ? rawFiles : [rawFiles];
         for (const f of fileArr) {
           if (f.size > MAX_BYTES) {
             return res.status(400).json({ message: 'One of the files exceeds 8MB limit' });
@@ -64,13 +71,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       try {
         const lead = await prisma.lead.create({ data: {
           name,
-          email: (fields.email as string) || null,
+          email: getSingleValue(fields.email) || null,
           phone,
-          gstin: (fields.gstin as string) || null,
+          gstin: getSingleValue(fields.gstin) || null,
           caseType,
-          refNumber: (fields.refNumber as string) || null,
-          amount: fields.amount ? Number(fields.amount) : null,
-          description: (fields.description as string) || null,
+          refNumber: getSingleValue(fields.refNumber) || null,
+          amount: fields.amount ? Number(getSingleValue(fields.amount)) : null,
+          description: getSingleValue(fields.description) || null,
           supportDocs: docPaths
         }});
 

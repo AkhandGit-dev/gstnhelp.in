@@ -1,9 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
-type Lead = any;
+type Lead = {
+  id: number;
+  name: string;
+  phone: string;
+  caseType: string;
+  status: string;
+  createdAt: string;
+  [key: string]: any;
+};
 
 const AdminDashboard = () => {
+  const router = useRouter();
   const [leads, setLeads] = useState<Lead[]>([]);
   const [loading, setLoading] = useState(false);
   const [filter, setFilter] = useState('');
@@ -11,16 +21,29 @@ const AdminDashboard = () => {
   const token = typeof window !== 'undefined' ? localStorage.getItem('gh_token') : null;
 
   const fetchLeads = async () => {
+    if (!token) return; 
     setLoading(true);
     try {
       const res = await axios.get('/api/leads', { headers: { Authorization: `Bearer ${token}` } });
       setLeads(res.data);
-    } catch (e) {
+    } catch (e: any) {
       console.error(e);
-    } finally { setLoading(false); }
+      if (e.response && (e.response.status === 401 || e.response.status === 403)) {
+        localStorage.removeItem('gh_token');
+        router.push('/admin/login');
+      }
+    } finally { 
+      setLoading(false); 
+    }
   };
 
-  useEffect(() => { fetchLeads(); }, []);
+  useEffect(() => { 
+    if (!token) {
+      router.push('/admin/login');
+    } else {
+      fetchLeads(); 
+    }
+  }, [token]);
 
   const updateStatus = async (id: number, status: string) => {
     await axios.put(`/api/leads/${id}`, { status }, { headers: { Authorization: `Bearer ${token}` } });
