@@ -11,14 +11,26 @@ const Header: React.FC = () => {
       {isHome ? (
         <>
           {/* ================= HERO BANNER ================= */}
-          <div className="relative w-full h-[260px] md:h-[520px] overflow-hidden">
-            <Link href="/" className="absolute inset-0">
-              <img
-                src="/logo.png"   // ideally use a banner image here
-                alt="GSTN Help"
-                className="w-full h-full object-cover object-center"
-              />
-            </Link>
+          <div
+            className="
+              relative 
+              w-full 
+              min-h-[340px] 
+              md:min-h-[520px]
+              overflow-hidden
+              pt-6 md:pt-10
+            "
+          >
+            <img
+              src="/logo.png"   // this is your banner image
+              alt="GSTN Help"
+              className="
+                w-full
+                h-full
+                object-cover
+                object-top
+              "
+            />
           </div>
 
           {/* ================= NAV BAR ================= */}
@@ -83,5 +95,6 @@ const Header: React.FC = () => {
 };
 
 export default Header;
+
 
 
