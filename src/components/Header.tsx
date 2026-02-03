@@ -10,16 +10,17 @@ const Header: React.FC = () => {
     <header className="bg-white shadow">
       {isHome ? (
         <div className="flex flex-col w-full">
-          <div className="w-full bg-white border-b border-gray-100">
-            <Link href="/" className="block w-full">
+          {/* Banner container with strict height and centered content */}
+          <div className="w-full bg-white border-b border-gray-100 flex justify-center items-center h-[100px] md:h-[140px]">
+            <Link href="/" className="h-full">
               <img 
                 src="/logo.png" 
                 alt="GSTN Help" 
-                className="w-full h-auto block" 
+                className="h-full w-auto" // Logo fills height, width is automatic
               />
             </Link>
           </div>
-          <div className="container mx-auto px-6 py-4">
+          <div className="container mx-auto px-6 py-3">
             <nav className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
               <Link href="/" className="font-medium text-gray-700 hover:text-blue-900 text-lg">Home</Link>
               <Link href="/services" className="font-medium text-gray-700 hover:text-blue-900 text-lg">Services</Link>
