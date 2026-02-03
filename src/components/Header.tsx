@@ -6,7 +6,7 @@ const Header: React.FC = () => {
     <header className="bg-white shadow">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/">
-          <img src="/logo.png" alt="GSTN Help" className="h-10" />
+          <img src="/logo.png" alt="GSTN Help" className="h-14 w-auto" />
         </Link>
         <nav className="space-x-4 flex items-center">
           <Link href="/">Home</Link>

@@ -44,9 +44,9 @@ const Home: React.FC = () => {
         <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Affordable, expert-led solutions for your GST compliance needs.</p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-          <ServiceCard title="GST Notice Reply & Resolution" desc="Drafting strategic replies, SCN handling, and personal hearing preparation." price="Starting at ₹2,999" />
-          <ServiceCard title="GST Refund Advisory & Filing" desc="End-to-end support for refund applications, deficiency memos, and follow-ups." price="Starting at ₹3,999" />
-          <ServiceCard title="ITC Reconciliation & Recovery" desc="GSTR-2A/2B vs Books reconciliation and vendor mismatch resolution." price="Starting at ₹4,999" />
+          <ServiceCard title="GST Notice Reply & Resolution" desc="Drafting strategic replies, SCN handling, and personal hearing preparation." price="Starting at ₹2,499" />
+          <ServiceCard title="GST Refund Advisory & Filing" desc="End-to-end support for refund applications, deficiency memos, and follow-ups." price="Starting at ₹2,999" />
+          <ServiceCard title="ITC Reconciliation & Recovery" desc="GSTR-2A/2B vs Books reconciliation and vendor mismatch resolution." price="Starting at ₹2,999" />
         </div>
         <div className="text-center mt-8">
           <p className="text-sm text-gray-500">Final pricing depends on complexity and documents. Free review before engagement.</p>
