@@ -15,7 +15,7 @@ const Header: React.FC = () => {
               <img 
                 src="/logo.png" 
                 alt="GSTN Help" 
-                className="w-full h-auto object-contain" 
+                className="w-full h-[120px] md:h-[160px] object-contain" 
               />
             </Link>
           </div>
