@@ -11,7 +11,7 @@ const Header: React.FC = () => {
       {isHome ? (
         <div className="flex flex-col w-full">
           {/* Banner container with strict height and centered content */}
-          <div className="w-full bg-white border-b border-gray-100 flex justify-center items-center h-[100px] md:h-[140px]">
+          <div className="w-full bg-white border-b border-gray-100 flex justify-center items-center h-[90px] md:h-[120px] py-2">
             <Link href="/" className="h-full">
               <img 
                 src="/logo.png" 
@@ -20,7 +20,7 @@ const Header: React.FC = () => {
               />
             </Link>
           </div>
-          <div className="container mx-auto px-6 py-3">
+          <div className="container mx-auto px-6 py-2">
             <nav className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
               <Link href="/" className="font-medium text-gray-700 hover:text-blue-900 text-lg">Home</Link>
               <Link href="/services" className="font-medium text-gray-700 hover:text-blue-900 text-lg">Services</Link>
