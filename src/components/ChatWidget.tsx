@@ -7,11 +7,15 @@ type Message = {
   sender: 'user' | 'bot';
 };
 
+// Define steps for the conversation flow
+type ChatStep = 'init' | 'ask_name' | 'ask_phone' | 'ask_email' | 'completed';
+
 const ChatWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
-  const [step, setStep] = useState<'init' | 'awaiting_details' | 'completed'>('init');
+  const [step, setStep] = useState<ChatStep>('init');
+  const [leadData, setLeadData] = useState({ name: '', phone: '', email: '' });
   const [isSending, setIsSending] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -22,6 +26,14 @@ const ChatWidget: React.FC = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages, isOpen]);
+
+  const addBotMessage = (text: string) => {
+    setMessages((prev) => [...prev, {
+      id: Date.now().toString() + Math.random(),
+      text,
+      sender: 'bot',
+    }]);
+  };
 
   const handleSend = async (e?: React.FormEvent) => {
     e?.preventDefault();
@@ -38,53 +50,64 @@ const ChatWidget: React.FC = () => {
     setInput('');
     setIsSending(true);
 
-    // Bot Logic
-    if (step === 'init') {
-      // Simulate typing delay
-      setTimeout(() => {
-        const botMsg: Message = {
-          id: (Date.now() + 1).toString(),
-          text: "Thanks for connecting GSTnHELP team , please help us with with your name and contact details like phone number and email address to contact with a GST expert",
-          sender: 'bot',
-        };
-        setMessages((prev) => [...prev, botMsg]);
-        setStep('awaiting_details');
-        setIsSending(false);
-      }, 800);
-    } else if (step === 'awaiting_details') {
-      // Attempt to submit details to backend
-      try {
-        const formData = new FormData();
-        // Simple extraction or fallback
-        const phoneMatch = userText.match(/[\d\+\-\(\) ]{10,}/);
-        const emailMatch = userText.match(/[\w\.-]+@[\w\.-]+\.\w+/);
+    // Simulate typing delay
+    setTimeout(async () => {
+      if (step === 'init') {
+        addBotMessage("Thanks for connecting with GSTnHELP! To assist you better, could you please tell me your full Name?");
+        setStep('ask_name');
+      } 
+      else if (step === 'ask_name') {
+        if (userText.length < 3) {
+          addBotMessage("Please enter a valid name (at least 3 characters).");
+        } else {
+          setLeadData(prev => ({ ...prev, name: userText }));
+          addBotMessage(`Hi ${userText}, please provide your 10-digit Phone Number so our expert can call you.`);
+          setStep('ask_phone');
+        }
+      } 
+      else if (step === 'ask_phone') {
+        // Validate phone (allow spaces/dashes, check for at least 10 digits)
+        const cleaned = userText.replace(/\D/g, '');
+        if (cleaned.length < 10 || cleaned.length > 15) {
+          addBotMessage("That doesn't look like a valid phone number. Please enter a valid 10-digit mobile number.");
+        } else {
+          setLeadData(prev => ({ ...prev, phone: userText }));
+          addBotMessage("Got it. Finally, please share your Email Address for sending updates.");
+          setStep('ask_email');
+        }
+      } 
+      else if (step === 'ask_email') {
+        // Validate email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(userText)) {
+          addBotMessage("Please enter a valid email address (e.g., name@example.com).");
+        } else {
+          const finalData = { ...leadData, email: userText };
+          setLeadData(finalData);
+          
+          // Submit to Backend
+          try {
+            const formData = new FormData();
+            formData.append('name', finalData.name);
+            formData.append('phone', finalData.phone);
+            formData.append('email', finalData.email);
+            formData.append('caseType', 'Chat Inquiry');
+            formData.append('description', 'Lead captured via Website Chat Widget');
+            formData.append('preferredContact', 'WhatsApp');
 
-        formData.append('name', 'Chat Visitor'); 
-        formData.append('caseType', 'Chat Inquiry');
-        formData.append('description', `Chat Log: ${userText}`);
-        formData.append('preferredContact', 'WhatsApp');
-        formData.append('phone', phoneMatch ? phoneMatch[0] : 'Not provided in chat');
-        if (emailMatch) formData.append('email', emailMatch[0]);
-
-        // We send this to your existing API
-        await axios.post('/api/leads', formData);
-      } catch (error) {
-        console.error('Chat lead submission error', error);
+            await axios.post('/api/leads', formData);
+            
+            addBotMessage("Thank you! We have received your details. A GST expert will connect with you shortly.");
+            setStep('completed');
+          } catch (error) {
+            console.error('Chat lead submission error', error);
+            addBotMessage("Sorry, there was a technical issue submitting your details. Please use the WhatsApp button below.");
+          }
+        }
       }
-
-      setTimeout(() => {
-        const botMsg: Message = {
-          id: (Date.now() + 1).toString(),
-          text: "Thanks! We have received your details. A GST expert will connect with you shortly.",
-          sender: 'bot',
-        };
-        setMessages((prev) => [...prev, botMsg]);
-        setStep('completed');
-        setIsSending(false);
-      }, 1000);
-    } else {
+      
       setIsSending(false);
-    }
+    }, 800);
   };
 
   return (
@@ -131,10 +154,11 @@ const ChatWidget: React.FC = () => {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Type your message..."
-              className="flex-1 border border-gray-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-blue-500"
+              placeholder={step === 'completed' ? "Chat ended" : "Type your message..."}
+              disabled={step === 'completed'}
+              className="flex-1 border border-gray-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-blue-500 disabled:bg-gray-100"
             />
-            <button type="submit" className="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition">
+            <button type="submit" disabled={step === 'completed'} className="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition disabled:bg-gray-400">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
             </button>
           </form>
