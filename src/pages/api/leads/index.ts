@@ -48,13 +48,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       console.log('[reCAPTCHA] Incoming fields:', Object.keys(fields)); // Debug log
 
-      const recaptchaToken = getSingleValue(fields['g-recaptcha-response']) || getSingleValue(fields['token']) || getSingleValue(fields['recaptchaToken']);
-      const recaptchaOk = await verifyRecaptcha(recaptchaToken);
-      if (!recaptchaOk) return res.status(400).json({ message: 'reCAPTCHA verification failed' });
+      const caseType = getSingleValue(fields.caseType);
+
+      // Only verify reCAPTCHA if it is NOT a Chat Inquiry
+      if (caseType !== 'Chat Inquiry') {
+        const recaptchaToken = getSingleValue(fields['g-recaptcha-response']) || getSingleValue(fields['token']) || getSingleValue(fields['recaptchaToken']);
+        const recaptchaOk = await verifyRecaptcha(recaptchaToken);
+        if (!recaptchaOk) return res.status(400).json({ message: 'reCAPTCHA verification failed' });
+      }
 
       const phone = getSingleValue(fields.phone);
       const name = getSingleValue(fields.name);
-      const caseType = getSingleValue(fields.caseType);
 
       if (!phone || !name || !caseType) return res.status(400).json({ message: 'Missing required fields' });
 
