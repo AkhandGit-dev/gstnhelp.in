@@ -11,7 +11,7 @@ const Header: React.FC = () => {
       {isHome ? (
         <div className="flex flex-col w-full">
           {/* Banner container with strict height and centered content */}
-          <div className="w-full bg-white border-b border-gray-100 h-[120px] md:h-[480px]">
+          <div className="w-full bg-white border-b border-gray-100 h-[120px] md:h-[530px]">
             <Link href="/" className="block w-full h-full">
               <img 
                 src="/logo.png" 
