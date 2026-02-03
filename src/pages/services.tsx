@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import ServiceCard from '../components/ServiceCard';
+import ServiceInquiryModal from '../components/ServiceInquiryModal';
 
 const Services = () => {
+  const [selectedService, setSelectedService] = useState<string | null>(null);
+
   const services = [
     {
       title: 'GST Notice Reply & Resolution',
@@ -44,9 +47,16 @@ const Services = () => {
       <h1 className="text-2xl font-bold">Our Services</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
         {services.map((s) => (
-          <ServiceCard key={s.title} title={s.title} desc={s.desc} price={s.price} />
+          <ServiceCard 
+            key={s.title} 
+            title={s.title} 
+            desc={s.desc} 
+            price={s.price} 
+            onAvail={() => setSelectedService(s.title)}
+          />
         ))}
       </div>
+      <ServiceInquiryModal isOpen={!!selectedService} onClose={() => setSelectedService(null)} serviceName={selectedService || ''} />
     </div>
   );
 };

@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Hero from '../components/Hero';
 import Testimonial from '../components/Testimonial';
 import LeadForm from '../components/LeadForm';
 import Head from 'next/head';
+import ServiceInquiryModal from '../components/ServiceInquiryModal';
 
 const Home: React.FC = () => {
+  const [selectedService, setSelectedService] = useState<string | null>(null);
+
   return (
     <>
       <Head>
@@ -77,6 +80,9 @@ const Home: React.FC = () => {
               <span className="text-sm text-gray-500 font-medium">Estimated</span>
               <span className="text-red-700 font-bold bg-red-50 px-3 py-1 rounded-full text-sm">Starting at ₹2,499</span>
             </div>
+            <button onClick={() => setSelectedService('GST Notice Reply & Resolution')} className="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">
+              Avail Service
+            </button>
           </div>
 
           {/* Service 2 */}
@@ -90,6 +96,9 @@ const Home: React.FC = () => {
               <span className="text-sm text-gray-500 font-medium">Estimated</span>
               <span className="text-green-700 font-bold bg-green-50 px-3 py-1 rounded-full text-sm">Starting at ₹2,999</span>
             </div>
+            <button onClick={() => setSelectedService('GST Refund Advisory & Filing')} className="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">
+              Avail Service
+            </button>
           </div>
 
           {/* Service 3 */}
@@ -103,6 +112,9 @@ const Home: React.FC = () => {
               <span className="text-sm text-gray-500 font-medium">Estimated</span>
               <span className="text-blue-700 font-bold bg-blue-50 px-3 py-1 rounded-full text-sm">Starting at ₹2,999</span>
             </div>
+            <button onClick={() => setSelectedService('ITC Reconciliation & Recovery')} className="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">
+              Avail Service
+            </button>
           </div>
         </div>
 
@@ -110,6 +122,8 @@ const Home: React.FC = () => {
           <p className="text-sm text-gray-500">Final pricing depends on complexity and documents. Free review before engagement.</p>
           <a href="/services" className="inline-block mt-4 text-blue-600 font-semibold hover:underline">View All Services &rarr;</a>
         </div>
+
+        <ServiceInquiryModal isOpen={!!selectedService} onClose={() => setSelectedService(null)} serviceName={selectedService || ''} />
       </section>
 
       {/* Process Section */}
