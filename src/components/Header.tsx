@@ -10,6 +10,32 @@ const Header: React.FC = () => {
     <header className="w-full bg-white shadow">
       {isHome ? (
         <>
+          {/* ================= NAV BAR (Green Strip) ================= */}
+          <div className="w-full bg-green-700 text-white shadow-md">
+            <div className="container mx-auto px-6 py-3">
+              <nav className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
+                <Link href="/" className="font-medium text-white hover:text-green-100 text-lg">
+                  Home
+                </Link>
+                <Link href="/services" className="font-medium text-white hover:text-green-100 text-lg">
+                  Services
+                </Link>
+                <Link href="/about" className="font-medium text-white hover:text-green-100 text-lg">
+                  About
+                </Link>
+                <Link href="/contact" className="font-medium text-white hover:text-green-100 text-lg">
+                  Contact
+                </Link>
+                <Link
+                  href="/submit"
+                  className="bg-white text-green-800 px-6 py-2 rounded font-bold shadow hover:bg-gray-100 transition"
+                >
+                  Get Free GST Issue Review
+                </Link>
+              </nav>
+            </div>
+          </div>
+
           {/* ================= HERO BANNER ================= */}
           <div
             className="
@@ -18,7 +44,6 @@ const Header: React.FC = () => {
               min-h-[340px] 
               md:min-h-[520px]
               overflow-hidden
-              pt-6 md:pt-10
             "
           >
             <img
@@ -31,30 +56,6 @@ const Header: React.FC = () => {
                 object-top
               "
             />
-          </div>
-
-          {/* ================= NAV BAR ================= */}
-          <div className="container mx-auto px-6 py-4">
-            <nav className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
-              <Link href="/" className="font-medium text-gray-700 hover:text-blue-900 text-lg">
-                Home
-              </Link>
-              <Link href="/services" className="font-medium text-gray-700 hover:text-blue-900 text-lg">
-                Services
-              </Link>
-              <Link href="/about" className="font-medium text-gray-700 hover:text-blue-900 text-lg">
-                About
-              </Link>
-              <Link href="/contact" className="font-medium text-gray-700 hover:text-blue-900 text-lg">
-                Contact
-              </Link>
-              <Link
-                href="/submit"
-                className="bg-green-600 text-white px-6 py-3 rounded font-bold shadow hover:bg-green-700 transition"
-              >
-                Get Free GST Issue Review
-              </Link>
-            </nav>
           </div>
         </>
       ) : (
@@ -95,6 +96,3 @@ const Header: React.FC = () => {
 };
 
 export default Header;
-
-
-
