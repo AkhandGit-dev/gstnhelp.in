@@ -11,12 +11,12 @@ const Header: React.FC = () => {
       {isHome ? (
         <div className="flex flex-col w-full">
           {/* Banner container with strict height and centered content */}
-          <div className="w-full bg-white border-b border-gray-100 flex justify-center items-center h-[90px] md:h-[120px] py-2">
-            <Link href="/" className="h-full">
+          <div className="w-full bg-white border-b border-gray-100 h-[120px] md:h-[180px]">
+            <Link href="/" className="block w-full h-full">
               <img 
                 src="/logo.png" 
                 alt="GSTN Help" 
-                className="h-full w-auto" // Logo fills height, width is automatic
+                className="w-full h-full object-cover"
               />
             </Link>
           </div>
