@@ -1,8 +1,8 @@
 import sgMail from '@sendgrid/mail';
 
 const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY || '';
-const FROM_EMAIL = process.env.FROM_EMAIL || 'no-reply@gstnhelp.in';
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@gstnhelp.in';
+const FROM_EMAIL = process.env.FROM_EMAIL || 'support@gstnhelp.in';
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'support@gstnhelp.in';
 
 sgMail.setApiKey(SENDGRID_API_KEY);
 
