@@ -10,12 +10,12 @@ const Header: React.FC = () => {
     <header className="bg-white shadow">
       {isHome ? (
         <div className="flex flex-col w-full">
-          <div className="w-full bg-white border-b border-gray-100 flex justify-center items-center h-[200px] md:h-[350px]">
-            <Link href="/">
+          <div className="w-full bg-white border-b border-gray-100">
+            <Link href="/" className="block w-full">
               <img 
                 src="/logo.png" 
                 alt="GSTN Help" 
-                className="h-full w-auto" 
+                className="w-full h-auto block" 
               />
             </Link>
           </div>
