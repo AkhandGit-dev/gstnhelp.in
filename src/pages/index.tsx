@@ -128,41 +128,6 @@ const Home: React.FC = () => {
           </p>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-slate-900 text-slate-400 py-12">
-        <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <h4 className="text-white font-bold text-lg mb-4">GSTN Help</h4>
-            <p className="text-sm">Expert Help for GST Notices, Refunds & Compliance – India.</p>
-          </div>
-          <div>
-            <h4 className="text-white font-bold mb-4">Services</h4>
-            <ul className="space-y-2 text-sm">
-              <li><a href="/services" className="hover:text-white">Notice Reply</a></li>
-              <li><a href="/services" className="hover:text-white">Refund Advisory</a></li>
-              <li><a href="/services" className="hover:text-white">ITC Reconciliation</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-white font-bold mb-4">Company</h4>
-            <ul className="space-y-2 text-sm">
-              <li><a href="/about" className="hover:text-white">About Us</a></li>
-              <li><a href="#lead-form" className="hover:text-white">Contact</a></li>
-              <li><span className="cursor-not-allowed">Privacy Policy</span></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-white font-bold mb-4">Disclaimer</h4>
-            <p className="text-xs leading-relaxed">
-              Independent GST advisory services. Not affiliated with GSTN or the government. All services are provided by qualified professionals.
-            </p>
-          </div>
-        </div>
-        <div className="container mx-auto px-6 mt-8 pt-8 border-t border-slate-800 text-center text-xs">
-          &copy; {new Date().getFullYear()} GSTN Help. All rights reserved.
-        </div>
-      </footer>
     </>
   );
 };
