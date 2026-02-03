@@ -5,32 +5,32 @@ import ServiceCard from '../components/ServiceCard';
 const Services = () => {
   const services = [
     {
-      title: 'GST Notice Reply & Dispute Resolution',
-      desc: 'We draft replies, prepare evidence, and propose strategies for best outcomes. Representation during hearings and appeals.',
-      price: '₹20,000 - ₹70,000+'
+      title: 'GST Notice Reply & Resolution',
+      desc: 'Drafting strategic replies, handling SCNs, and preparing for personal hearings. We handle ASMT-10, DRC-01, and more.',
+      price: 'Starting at ₹2,499'
     },
     {
-      title: 'GST Refund Advisory & Filing Support',
-      desc: 'End-to-end support for refund claims, reconciling returns and supporting documents with the department.',
-      price: '₹10,000 - ₹50,000+'
+      title: 'GST Refund Advisory & Filing',
+      desc: 'End-to-end support for refund claims (exports, inverted duty), deficiency memo handling, and department follow-up.',
+      price: 'Starting at ₹2,999'
     },
     {
       title: 'ITC Reconciliation & Recovery',
-      desc: 'Forensic reconciliation between books and GST records, recovery plans and retro claim assistance.',
-      price: '₹15,000 - ₹80,000+'
+      desc: 'Detailed reconciliation between books and GSTR-2A/2B. Vendor follow-up strategies and recovery plans.',
+      price: 'Starting at ₹2,999'
     },
     {
-      title: 'GST Audit Defense & Health Check',
-      desc: 'Audit preparedness, issue rectification and defense strategy during assessments.',
-      price: '₹20,000+'
+      title: 'GST Audit Support',
+      desc: 'Department audit handling, issue rectification, and defense strategy during assessments.',
+      price: 'Custom Pricing'
     },
     {
-      title: 'GST Appeals & Representation Support',
-      desc: 'Drafting appeals, coordination with advocates and representation at appellate forums.'
+      title: 'Appeals & Representation',
+      desc: 'Drafting appeals, coordination with advocates, and representation at appellate forums.'
     },
     {
-      title: 'Complex GST Advisory & Case Consulting',
-      desc: 'Customized consulting for industry-specific GST challenges and litigation planning.'
+      title: 'Complex Case Consulting',
+      desc: 'Customized consulting for industry-specific GST challenges, litigation planning, and second opinions.'
     }
   ];
 
