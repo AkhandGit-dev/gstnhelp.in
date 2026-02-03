@@ -10,7 +10,7 @@ const Header: React.FC = () => {
     <header className="bg-white shadow">
       {isHome ? (
         <div className="flex flex-col w-full">
-          <div className="w-full bg-white border-b border-gray-100 flex justify-center items-center h-[120px] md:h-[160px]">
+          <div className="w-full bg-white border-b border-gray-100 flex justify-center items-center h-[200px] md:h-[350px]">
             <Link href="/">
               <img 
                 src="/logo.png" 
