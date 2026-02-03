@@ -49,9 +49,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       console.log('[reCAPTCHA] Incoming fields:', Object.keys(fields)); // Debug log
 
       const caseType = getSingleValue(fields.caseType);
+      const source = getSingleValue(fields.source);
 
-      // Only verify reCAPTCHA if it is NOT a Chat Inquiry
-      if (caseType !== 'Chat Inquiry') {
+      // Only verify reCAPTCHA if it is NOT a Chat Inquiry and NOT from Quick Modal
+      if (caseType !== 'Chat Inquiry' && source !== 'quick_modal') {
         const recaptchaToken = getSingleValue(fields['g-recaptcha-response']) || getSingleValue(fields['token']) || getSingleValue(fields['recaptchaToken']);
         const recaptchaOk = await verifyRecaptcha(recaptchaToken);
         if (!recaptchaOk) return res.status(400).json({ message: 'reCAPTCHA verification failed' });

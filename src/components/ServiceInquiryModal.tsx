@@ -25,6 +25,7 @@ const ServiceInquiryModal: React.FC<Props> = ({ isOpen, onClose, serviceName }) 
       payload.append('caseType', serviceName);
       payload.append('description', `Inquiry for service: ${serviceName}`);
       payload.append('preferredContact', 'Phone');
+      payload.append('source', 'quick_modal');
 
       await axios.post('/api/leads', payload);
       setStep('success');
