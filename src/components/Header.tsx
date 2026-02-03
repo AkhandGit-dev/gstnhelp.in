@@ -5,8 +5,11 @@ const Header: React.FC = () => {
   return (
     <header className="bg-white shadow">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="font-bold text-xl">GSTN Help</Link>
-        <nav className="space-x-4">
+        <Link href="/">
+          <img src="/logo.png" alt="GSTN Help" className="h-10" />
+        </Link>
+        <nav className="space-x-4 flex items-center">
+          <Link href="/">Home</Link>
           <Link href="/services">Services</Link>
           <Link href="/about">About</Link>
           <Link href="/contact">Contact</Link>
