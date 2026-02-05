@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Hero from '../components/Hero';
 import Testimonial from '../components/Testimonial';
 import LeadForm from '../components/LeadForm';
+import Footer from '../components/Footer';
 import Head from 'next/head';
 import ServiceInquiryModal from '../components/ServiceInquiryModal';
 
@@ -200,6 +201,7 @@ const Home: React.FC = () => {
           </p>
         </div>
       </section>
+      <Footer />
     </>
   );
 };

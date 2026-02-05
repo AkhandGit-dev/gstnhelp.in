@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const Footer: React.FC = () => {
-  const [visitorCount, setVisitorCount] = useState<number | null>(null);
+  const [visitorCount, setVisitorCount] = useState<number>(0);
 
   useEffect(() => {
     // Fetch visitor count on mount
@@ -56,11 +56,9 @@ const Footer: React.FC = () => {
       </div>
       <div className="container mx-auto px-6 mt-8 pt-8 border-t border-slate-800 text-center text-xs">
         <p>&copy; {new Date().getFullYear()} GSTN Help. All rights reserved.</p>
-        {visitorCount !== null && (
-          <p className="mt-2 text-white font-medium">
-            Unique Visitors: <span className="font-mono font-bold text-white">{visitorCount}</span>
-          </p>
-        )}
+        <p className="mt-2 text-white font-medium">
+          Unique Visitors: <span className="font-mono font-bold text-white">{visitorCount}</span>
+        </p>
       </div>
     </footer>
   );
