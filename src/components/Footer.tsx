@@ -13,7 +13,11 @@ const Footer: React.FC = () => {
           setVisitorCount(res.data.count);
         }
       })
-      .catch(err => console.error('Failed to fetch visitor count', err));
+      .catch(err => {
+        console.error('Failed to fetch visitor count', err);
+        // If blocked by ad-blocker or API fails, show 0 instead of hiding it
+        setVisitorCount(0);
+      });
   }, []);
 
   return (
@@ -50,8 +54,8 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-6 mt-8 pt-8 border-t border-slate-800 text-center text-xs">
         <p>&copy; {new Date().getFullYear()} GSTN Help. All rights reserved.</p>
         {visitorCount !== null && (
-          <p className="mt-2 text-slate-600">
-            Unique Visitors: <span className="font-mono text-slate-400">{visitorCount}</span>
+          <p className="mt-2 text-slate-500">
+            Unique Visitors: <span className="font-mono text-slate-300">{visitorCount}</span>
           </p>
         )}
       </div>
