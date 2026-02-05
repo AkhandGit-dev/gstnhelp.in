@@ -54,8 +54,8 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-6 mt-8 pt-8 border-t border-slate-800 text-center text-xs">
         <p>&copy; {new Date().getFullYear()} GSTN Help. All rights reserved.</p>
         {visitorCount !== null && (
-          <p className="mt-2 text-slate-500">
-            Unique Visitors: <span className="font-mono text-slate-300">{visitorCount}</span>
+          <p className="mt-2 text-white font-medium">
+            Unique Visitors: <span className="font-mono font-bold text-white">{visitorCount}</span>
           </p>
         )}
       </div>

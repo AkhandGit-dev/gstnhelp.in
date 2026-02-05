@@ -42,4 +42,6 @@ model Visitor {
   ip        String   @unique
   lastSeen  DateTime @default(now())
   createdAt DateTime @default(now())
+
+  @@map("visitor")
 }
