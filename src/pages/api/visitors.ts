@@ -13,11 +13,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (Array.isArray(ip)) ip = ip[0];
     if (typeof ip === 'string' && ip.includes(',')) ip = ip.split(',')[0].trim();
 
+    // Ensure ip is a string
+    const visitorIp = typeof ip === 'string' ? ip : 'unknown';
+
     // Upsert the visitor (record if new, update time if exists)
     await prisma.visitor.upsert({
-      where: { ip },
+      where: { ip: visitorIp },
       update: { lastSeen: new Date() },
-      create: { ip, lastSeen: new Date() },
+      create: { ip: visitorIp, lastSeen: new Date() },
     });
 
     // Get total count

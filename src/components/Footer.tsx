@@ -7,10 +7,13 @@ const Footer: React.FC = () => {
 
   useEffect(() => {
     // Fetch visitor count on mount
-    axios.get('/api/visitors')
+    // Add timestamp to prevent browser caching
+    axios.get(`/api/visitors?t=${Date.now()}`)
       .then(res => {
-        if (typeof res.data.count === 'number') {
+        if (res.data && typeof res.data.count === 'number') {
           setVisitorCount(res.data.count);
+        } else {
+          setVisitorCount(0); // Fallback to 0 if format is wrong
         }
       })
       .catch(err => {
