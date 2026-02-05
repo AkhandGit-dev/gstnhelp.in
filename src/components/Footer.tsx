@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
     // Fetch visitor count on mount
     axios.get('/api/visitors')
       .then(res => {
-        if (typeof res.data.count === 'number' && res.data.count > 0) {
+        if (typeof res.data.count === 'number') {
           setVisitorCount(res.data.count);
         }
       })
