@@ -1,7 +1,21 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Footer: React.FC = () => {
+  const [visitorCount, setVisitorCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    // Fetch visitor count on mount
+    axios.get('/api/visitors')
+      .then(res => {
+        if (typeof res.data.count === 'number' && res.data.count > 0) {
+          setVisitorCount(res.data.count);
+        }
+      })
+      .catch(err => console.error('Failed to fetch visitor count', err));
+  }, []);
+
   return (
     <footer className="bg-slate-900 text-slate-400 py-12 mt-auto">
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -34,7 +48,12 @@ const Footer: React.FC = () => {
         </div>
       </div>
       <div className="container mx-auto px-6 mt-8 pt-8 border-t border-slate-800 text-center text-xs">
-        &copy; {new Date().getFullYear()} GSTN Help. All rights reserved.
+        <p>&copy; {new Date().getFullYear()} GSTN Help. All rights reserved.</p>
+        {visitorCount !== null && (
+          <p className="mt-2 text-slate-600">
+            Unique Visitors: <span className="font-mono text-slate-400">{visitorCount}</span>
+          </p>
+        )}
       </div>
     </footer>
   );

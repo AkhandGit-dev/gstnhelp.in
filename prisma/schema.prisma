@@ -36,3 +36,10 @@ model Admin {
   name      String?
   createdAt DateTime @default(now())
 }
+
+model Visitor {
+  id        Int      @id @default(autoincrement())
+  ip        String   @unique
+  lastSeen  DateTime @default(now())
+  createdAt DateTime @default(now())
+}
