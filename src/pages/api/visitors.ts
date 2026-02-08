@@ -16,6 +16,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Cast prisma to any to avoid TS errors before you run the migration
     const db = prisma as any;
 
+    if (!db) {
+      console.error('Prisma client is not initialized');
+      return res.status(200).json({ count: 0 });
+    }
+
     // Check if Visitor model is available (runtime check)
     if (!db.visitor) {
       console.warn('Visitor model not found in Prisma client. Please add the Visitor model to schema.prisma and run `npx prisma migrate dev`.');
