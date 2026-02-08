@@ -45,10 +45,11 @@ const Footer: React.FC = () => {
             <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
             <li><Link href="/privacy" className="hover:text-white">Privacy Policy</Link></li>
             <li><Link href="/terms" className="hover:text-white">Terms of Service</Link></li>
+            <li><Link href="/disclaimer" className="hover:text-white">Disclaimer</Link></li>
           </ul>
         </div>
         <div>
-          <h4 className="text-white font-bold mb-4">Disclaimer</h4>
+          <h4 className="text-white font-bold mb-4">Legal</h4>
           <p className="text-xs leading-relaxed">
             Independent GST advisory services. Not affiliated with GSTN or the government. All services are provided by qualified professionals.
           </p>

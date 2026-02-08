@@ -2,18 +2,73 @@ import React, { useState } from 'react';
 import Hero from '../components/Hero';
 import Testimonial from '../components/Testimonial';
 import LeadForm from '../components/LeadForm';
-import Head from 'next/head';
+import SEO from '../components/SEO';
 import ServiceInquiryModal from '../components/ServiceInquiryModal';
 
 const Home: React.FC = () => {
   const [selectedService, setSelectedService] = useState<string | null>(null);
 
+  // JSON-LD Structured Data for SEO & AI
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "GSTN Help",
+        "url": "https://gstnhelp.in",
+        "logo": "https://gstnhelp.in/logo.png",
+        "sameAs": [
+          "https://www.linkedin.com/company/gstnhelp"
+        ]
+      },
+      {
+        "@type": "ProfessionalService",
+        "name": "GSTN Help",
+        "image": "https://gstnhelp.in/logo.png",
+        "url": "https://gstnhelp.in",
+        "telephone": "+918793552739",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "IN"
+        },
+        "priceRange": "₹2499 - ₹10000",
+        "description": "Expert GST notice reply, refund support, and ITC reconciliation services in India."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I reply to a GST notice in India?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "To reply to a GST notice, you must analyze the allegations in forms like ASMT-10 or DRC-01, prepare a legal defense with supporting documents, and submit a response via the GST portal. GSTN Help provides expert drafting services for this."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I get a refund for inverted duty structure in GST?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, if your input tax rate is higher than your output tax rate, you can claim a refund under the inverted duty structure. We assist in calculating the eligible amount and filing the refund application."
+            }
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <>
-      <Head>
-        <title>Complex GST Notices & Refund Resolution – India | GSTN Help</title>
-        <meta name="description" content="Expert GST notice reply, refund support, and ITC reconciliation services in India. Get a free issue review from professional GST practitioners." />
-      </Head>
+      <SEO 
+        title="Complex GST Notices & Refund Resolution – India"
+        description="Expert GST notice reply, refund support, and ITC reconciliation services in India. Get a free issue review from professional GST practitioners."
+        canonical="https://gstnhelp.in/"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <Hero />
 
       {/* Trust Section */}
