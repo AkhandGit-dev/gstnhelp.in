@@ -17,7 +17,7 @@ const Hero: React.FC = () => {
             <a href="#lead-form" className="bg-green-600 text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-green-700 transition text-center">
               Get Free GST Issue Review
             </a>
-            <a href="https://wa.me/919999999999" target="_blank" rel="noreferrer" className="flex items-center justify-center border-2 border-green-600 text-green-700 px-8 py-4 rounded-lg font-semibold hover:bg-green-50 transition">
+            <a href="https://wa.me/918793552739?text=Hello%20I%20am%20visiting%20gstnhelp.in%20and%20need%20GST%20assistance" target="_blank" rel="noreferrer" className="flex items-center justify-center border-2 border-green-600 text-green-700 px-8 py-4 rounded-lg font-semibold hover:bg-green-50 transition">
               <span>WhatsApp a GST Expert</span>
             </a>
           </div>
