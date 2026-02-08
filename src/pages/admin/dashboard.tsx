@@ -17,6 +17,7 @@ const AdminDashboard = () => {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [loading, setLoading] = useState(false);
   const [filter, setFilter] = useState('');
+  const [visitorCount, setVisitorCount] = useState<number>(0);
 
   const token = typeof window !== 'undefined' ? localStorage.getItem('gh_token') : null;
 
@@ -37,11 +38,23 @@ const AdminDashboard = () => {
     }
   };
 
+  const fetchVisitors = async () => {
+    try {
+      const res = await axios.get('/api/visitors?t=' + Date.now());
+      if (res.data && typeof res.data.count === 'number') {
+        setVisitorCount(res.data.count);
+      }
+    } catch (e) {
+      console.error('Failed to fetch visitors', e);
+    }
+  };
+
   useEffect(() => { 
     if (!token) {
       router.push('/admin/login');
     } else {
       fetchLeads(); 
+      fetchVisitors();
     }
   }, [token]);
 
@@ -68,7 +81,19 @@ const AdminDashboard = () => {
   return (
     <div className="container mx-auto px-6 py-12">
       <h1 className="text-2xl font-bold">Admin Dashboard</h1>
-      <div className="mt-4 flex gap-3 items-center">
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+        <div className="bg-white p-6 rounded-lg shadow border border-gray-200">
+          <h3 className="text-gray-500 text-sm font-bold uppercase tracking-wider">Total Visitors</h3>
+          <p className="text-3xl font-bold text-gray-900 mt-2">{visitorCount}</p>
+        </div>
+        <div className="bg-white p-6 rounded-lg shadow border border-gray-200">
+          <h3 className="text-gray-500 text-sm font-bold uppercase tracking-wider">Total Leads</h3>
+          <p className="text-3xl font-bold text-blue-600 mt-2">{leads.length}</p>
+        </div>
+      </div>
+
+      <div className="mt-8 flex gap-3 items-center">
         <select onChange={e => setFilter(e.target.value)} className="border p-2">
           <option value="">All</option>
           <option>Notice</option>

@@ -141,7 +141,7 @@ const LeadForm: React.FC = () => {
         <button type="submit" disabled={loading} className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-md shadow transition-colors disabled:bg-blue-300">
           {loading ? 'Submitting...' : 'Submit Case for Review'}
         </button>
-        <a href="https://wa.me/919999999999" className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 font-medium flex items-center justify-center">WhatsApp Us</a>
+        <a href="https://wa.me/918793552739?text=Hello%20I%20am%20visiting%20gstnhelp.in%20and%20need%20GST%20assistance" className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 font-medium flex items-center justify-center">WhatsApp Us</a>
       </div>
     </form>
   );

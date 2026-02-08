@@ -165,7 +165,7 @@ const ChatWidget: React.FC = () => {
           
           {/* WhatsApp Direct Link */}
           <div className="bg-green-50 p-2 text-center border-t border-green-100">
-            <a href="https://wa.me/919999999999" target="_blank" rel="noreferrer" className="text-xs font-bold text-green-700 hover:underline flex items-center justify-center gap-1">
+            <a href="https://wa.me/918793552739?text=Hello%20I%20am%20visiting%20gstnhelp.in%20and%20need%20GST%20assistance" target="_blank" rel="noreferrer" className="text-xs font-bold text-green-700 hover:underline flex items-center justify-center gap-1">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-8.683-2.031-9.667-.272-.099-.47-.149-.669-.149-.198 0-.42.001-.643.001-.223 0-.585.085-.891.41-.306.326-1.168 1.141-1.168 2.784 0 1.642 1.194 3.227 1.361 3.449.167.223 2.35 3.586 5.694 5.029 2.791 1.204 3.359.964 3.978.903.619-.06 1.983-.81 2.261-1.591.278-.781.278-1.45.195-1.592z"/></svg>
               Prefer WhatsApp? Click here
             </a>
