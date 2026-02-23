@@ -38,14 +38,24 @@ const Services = () => {
   ];
 
   return (
-    <div className="container mx-auto px-6 py-12">
+    <div className="bg-slate-50 min-h-screen">
       <Head>
         <title>Services — GSTN Help</title>
         <meta name="description" content="Detailed GST services: notice reply, refund advisory, ITC reconciliation, audit defense and appeals." />
       </Head>
 
-      <h1 className="text-2xl font-bold">Our Services</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+      {/* Hero */}
+      <div className="bg-white border-b border-gray-200 py-16">
+        <div className="container mx-auto px-6 text-center">
+          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Our Professional Services</h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Comprehensive GST solutions tailored for businesses, professionals, and MSMEs.
+          </p>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {services.map((s) => (
           <ServiceCard 
             key={s.title} 
@@ -55,6 +65,7 @@ const Services = () => {
             onAvail={() => setSelectedService(s.title)}
           />
         ))}
+        </div>
       </div>
       <ServiceInquiryModal isOpen={!!selectedService} onClose={() => setSelectedService(null)} serviceName={selectedService || ''} />
     </div>
