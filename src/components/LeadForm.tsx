@@ -76,34 +76,34 @@ const LeadForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 bg-white p-8 rounded-2xl shadow-xl border border-gray-100 relative overflow-hidden">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 bg-white p-6 rounded-xl shadow-lg border border-gray-100 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-green-500"></div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-semibold text-gray-700 mb-1">Full Name <span className="text-red-500">*</span></label>
-          <input {...register('name', { required: 'Name is required' })} className="w-full rounded-lg border-gray-300 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 p-3 text-sm" placeholder="John Doe" />
+          <input {...register('name', { required: 'Name is required' })} className="w-full rounded-lg border-gray-300 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 p-2.5 text-sm" placeholder="John Doe" />
           {errors.name && <p className="text-red-600 text-xs mt-1">{errors.name.message}</p>}
         </div>
         <div>
           <label className="block text-sm font-semibold text-gray-700 mb-1">Email</label>
-          <input {...register('email', { pattern: { value: /\S+@\S+\.\S+/, message: 'Invalid email' } })} className="w-full rounded-lg border-gray-300 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 p-3 text-sm" placeholder="john@company.com" />
+          <input {...register('email', { pattern: { value: /\S+@\S+\.\S+/, message: 'Invalid email' } })} className="w-full rounded-lg border-gray-300 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 p-2.5 text-sm" placeholder="john@company.com" />
           {errors.email && <p className="text-red-600 text-xs mt-1">{errors.email.message}</p>}
         </div>
         <div>
           <label className="block text-sm font-semibold text-gray-700 mb-1">Phone <span className="text-red-500">*</span></label>
-          <input {...register('phone', { required: 'Phone is required' })} className="w-full rounded-lg border-gray-300 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 p-3 text-sm" placeholder="+91 98765 43210" />
+          <input {...register('phone', { required: 'Phone is required' })} className="w-full rounded-lg border-gray-300 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 p-2.5 text-sm" placeholder="+91 98765 43210" />
           {errors.phone && <p className="text-red-600 text-xs mt-1">{errors.phone.message}</p>}
         </div>
         <div>
           <label className="block text-sm font-semibold text-gray-700 mb-1">GSTIN</label>
-          <input {...register('gstin')} className="w-full rounded-lg border-gray-300 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 p-3 text-sm" placeholder="Optional" />
+          <input {...register('gstin')} className="w-full rounded-lg border-gray-300 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 p-2.5 text-sm" placeholder="Optional" />
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
           <label className="block text-sm font-semibold text-gray-700 mb-1">Case Type</label>
-          <select {...register('caseType')} className="w-full rounded-lg border-gray-300 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 p-3 text-sm">
+          <select {...register('caseType')} className="w-full rounded-lg border-gray-300 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 p-2.5 text-sm">
             <option>Notice</option>
             <option>Refund</option>
             <option>ITC</option>
@@ -113,17 +113,17 @@ const LeadForm: React.FC = () => {
         </div>
         <div>
           <label className="block text-sm font-semibold text-gray-700 mb-1">Ref No.</label>
-          <input {...register('refNumber')} className="w-full rounded-lg border-gray-300 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 p-3 text-sm" placeholder="e.g. ZA..." />
+          <input {...register('refNumber')} className="w-full rounded-lg border-gray-300 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 p-2.5 text-sm" placeholder="e.g. ZA..." />
         </div>
         <div>
           <label className="block text-sm font-semibold text-gray-700 mb-1">Amount (₹)</label>
-          <input {...register('amount')} type="number" className="w-full rounded-lg border-gray-300 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 p-3 text-sm" placeholder="Approx Value" />
+          <input {...register('amount')} type="number" className="w-full rounded-lg border-gray-300 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 p-2.5 text-sm" placeholder="Approx Value" />
         </div>
       </div>
 
       <div>
         <label className="block text-sm font-semibold text-gray-700 mb-1">Description of the issue</label>
-        <textarea {...register('description')} className="w-full rounded-lg border-gray-300 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 p-3 text-sm" rows={4} placeholder="Please describe the notice or refund issue briefly..."></textarea>
+        <textarea {...register('description')} className="w-full rounded-lg border-gray-300 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 p-2.5 text-sm" rows={3} placeholder="Please describe the notice or refund issue briefly..."></textarea>
       </div>
 
       <div>
@@ -133,7 +133,7 @@ const LeadForm: React.FC = () => {
 
       <div>
         <label className="block text-sm font-semibold text-gray-700 mb-1">Preferred contact method</label>
-        <select {...register('preferredContact')} className="w-full rounded-lg border-gray-300 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 p-3 text-sm">
+        <select {...register('preferredContact')} className="w-full rounded-lg border-gray-300 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 p-2.5 text-sm">
           <option>Phone</option>
           <option>Email</option>
           <option>WhatsApp</option>
@@ -151,10 +151,10 @@ const LeadForm: React.FC = () => {
       {serverError && <p className="text-red-600">{serverError}</p>}
 
       <div className="flex gap-3">
-        <button type="submit" disabled={loading} className="flex-1 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-bold px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed">
+        <button type="submit" disabled={loading} className="flex-1 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-bold px-6 py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed text-sm">
           {loading ? 'Submitting...' : 'Submit Case for Review'}
         </button>
-        <a href="https://wa.me/918793552739?text=Hello%20I%20am%20visiting%20gstnhelp.in%20and%20need%20GST%20assistance" className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-bold flex items-center justify-center transition-colors">WhatsApp</a>
+        <a href="https://wa.me/918793552739?text=Hello%20I%20am%20visiting%20gstnhelp.in%20and%20need%20GST%20assistance" className="px-6 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-bold flex items-center justify-center transition-colors text-sm">WhatsApp</a>
       </div>
     </form>
   );

@@ -10,15 +10,15 @@ const Contact = () => {
       </Head>
 
       <div className="container mx-auto px-6 max-w-4xl">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900">Get in Touch</h1>
-          <p className="mt-4 text-lg text-gray-600">We are here to help you with your GST compliance and litigation needs.</p>
+        <div className="text-center mb-10">
+          <h1 className="text-3xl font-bold text-gray-900">Get in Touch</h1>
+          <p className="mt-3 text-base text-gray-600">We are here to help you with your GST compliance and litigation needs.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Contact Card */}
-          <div className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
+          <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+            <h3 className="text-xl font-bold text-gray-900 mb-5">Contact Information</h3>
             
             <div className="space-y-6">
               <div className="flex items-start gap-4">
@@ -46,12 +46,12 @@ const Contact = () => {
           </div>
 
           {/* Quick Action Card */}
-          <div className="bg-gradient-to-br from-blue-900 to-slate-800 p-8 rounded-3xl shadow-lg text-white flex flex-col justify-center">
-            <h3 className="text-2xl font-bold mb-4">Have a Notice?</h3>
-            <p className="text-blue-100 mb-8 leading-relaxed">
+          <div className="bg-gradient-to-br from-blue-900 to-slate-800 p-6 rounded-2xl shadow-lg text-white flex flex-col justify-center">
+            <h3 className="text-xl font-bold mb-4">Have a Notice?</h3>
+            <p className="text-blue-100 mb-6 leading-relaxed text-sm">
               Don't wait until the last date. Submit your notice details for a preliminary review by our experts.
             </p>
-            <a href="/submit" className="bg-white text-blue-900 font-bold py-3 px-6 rounded-xl text-center hover:bg-blue-50 transition-colors shadow-md">
+            <a href="/submit" className="bg-white text-blue-900 font-bold py-2.5 px-6 rounded-lg text-center hover:bg-blue-50 transition-colors shadow-md text-sm">
               Submit Case for Review &rarr;
             </a>
           </div>
