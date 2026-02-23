@@ -72,15 +72,15 @@ const Home: React.FC = () => {
       <Hero />
 
       {/* Trust Section */}
-      <section className="bg-slate-50 py-20 border-b border-gray-200">
+      <section className="bg-white py-24">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">Why Businesses Trust GSTN Help</h2>
-            <p className="mt-4 text-gray-600">We combine legal expertise with technical reconciliation to solve complex GST issues.</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Why Businesses Trust GSTN Help</h2>
+            <p className="mt-4 text-lg text-gray-600">We combine legal expertise with technical reconciliation to solve complex GST issues.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Trust Card 1 */}
-            <div className="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 relative overflow-hidden">
+            <div className="group bg-slate-50 p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-slate-100 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-150 opacity-50"></div>
               <div className="relative z-10">
                 <div className="w-14 h-14 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shadow-sm">
@@ -92,7 +92,7 @@ const Home: React.FC = () => {
             </div>
 
             {/* Trust Card 2 */}
-            <div className="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 relative overflow-hidden">
+            <div className="group bg-slate-50 p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-slate-100 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-green-50 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-150 opacity-50"></div>
               <div className="relative z-10">
                 <div className="w-14 h-14 bg-green-100 text-green-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-600 group-hover:text-white transition-colors duration-300 shadow-sm">
@@ -104,7 +104,7 @@ const Home: React.FC = () => {
             </div>
 
             {/* Trust Card 3 */}
-            <div className="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 relative overflow-hidden">
+            <div className="group bg-slate-50 p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-slate-100 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-purple-50 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-150 opacity-50"></div>
               <div className="relative z-10">
                 <div className="w-14 h-14 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-600 group-hover:text-white transition-colors duration-300 shadow-sm">
@@ -119,13 +119,13 @@ const Home: React.FC = () => {
       </section>
 
       {/* Services Section */}
-      <section className="container mx-auto px-6 py-20">
-        <h2 className="text-3xl font-bold text-center mb-4 text-gray-900">Our Professional Services</h2>
-        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Affordable, expert-led solutions for your GST compliance needs.</p>
+      <section className="container mx-auto px-6 py-24">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">Our Professional Services</h2>
+        <p className="text-center text-lg text-gray-600 mb-16 max-w-2xl mx-auto">Affordable, expert-led solutions for your GST compliance needs.</p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
           {/* Service 1 */}
-          <div className="group relative bg-white rounded-2xl border border-gray-200 p-8 hover:shadow-2xl transition-all duration-300 hover:border-blue-300">
+          <div className="group relative bg-white rounded-3xl border border-gray-100 p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
             <div className="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
               <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
             </div>
@@ -135,13 +135,13 @@ const Home: React.FC = () => {
               <span className="text-sm text-gray-500 font-medium">Estimated</span>
               <span className="text-red-700 font-bold bg-red-50 px-3 py-1 rounded-full text-sm">Starting at ₹2,499</span>
             </div>
-            <button onClick={() => setSelectedService('GST Notice Reply & Resolution')} className="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">
+            <button onClick={() => setSelectedService('GST Notice Reply & Resolution')} className="w-full mt-6 bg-gray-900 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition-colors">
               Avail Service
             </button>
           </div>
 
           {/* Service 2 */}
-          <div className="group relative bg-white rounded-2xl border border-gray-200 p-8 hover:shadow-2xl transition-all duration-300 hover:border-blue-300">
+          <div className="group relative bg-white rounded-3xl border border-gray-100 p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
             <div className="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
               <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" /></svg>
             </div>
@@ -151,13 +151,13 @@ const Home: React.FC = () => {
               <span className="text-sm text-gray-500 font-medium">Estimated</span>
               <span className="text-green-700 font-bold bg-green-50 px-3 py-1 rounded-full text-sm">Starting at ₹2,999</span>
             </div>
-            <button onClick={() => setSelectedService('GST Refund Advisory & Filing')} className="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">
+            <button onClick={() => setSelectedService('GST Refund Advisory & Filing')} className="w-full mt-6 bg-gray-900 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition-colors">
               Avail Service
             </button>
           </div>
 
           {/* Service 3 */}
-          <div className="group relative bg-white rounded-2xl border border-gray-200 p-8 hover:shadow-2xl transition-all duration-300 hover:border-blue-300">
+          <div className="group relative bg-white rounded-3xl border border-gray-100 p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
             <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
               <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2z" /></svg>
             </div>
@@ -167,7 +167,7 @@ const Home: React.FC = () => {
               <span className="text-sm text-gray-500 font-medium">Estimated</span>
               <span className="text-blue-700 font-bold bg-blue-50 px-3 py-1 rounded-full text-sm">Starting at ₹2,999</span>
             </div>
-            <button onClick={() => setSelectedService('ITC Reconciliation & Recovery')} className="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">
+            <button onClick={() => setSelectedService('ITC Reconciliation & Recovery')} className="w-full mt-6 bg-gray-900 text-white py-3 rounded-xl font-semibold hover:bg-blue-600 transition-colors">
               Avail Service
             </button>
           </div>
@@ -182,27 +182,27 @@ const Home: React.FC = () => {
       </section>
 
       {/* Process Section */}
-      <section className="bg-blue-900 py-16 text-white">
+      <section className="bg-gradient-to-br from-blue-900 to-slate-900 py-20 text-white">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-12">How We Resolve Your Issue</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">How We Resolve Your Issue</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             <div className="relative">
-              <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">1</div>
+              <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg shadow-green-500/30">1</div>
               <h4 className="font-semibold text-lg">Submit Issue</h4>
               <p className="text-blue-200 text-sm mt-2">Upload your notice or details securely.</p>
             </div>
             <div className="relative">
-              <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">2</div>
+              <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg shadow-green-500/30">2</div>
               <h4 className="font-semibold text-lg">Free Review</h4>
               <p className="text-blue-200 text-sm mt-2">Expert assessment of your case.</p>
             </div>
             <div className="relative">
-              <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">3</div>
+              <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg shadow-green-500/30">3</div>
               <h4 className="font-semibold text-lg">Strategy & Price</h4>
               <p className="text-blue-200 text-sm mt-2">Clear roadmap and quote shared.</p>
             </div>
             <div className="relative">
-              <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">4</div>
+              <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg shadow-green-500/30">4</div>
               <h4 className="font-semibold text-lg">Resolution</h4>
               <p className="text-blue-200 text-sm mt-2">Drafting, filing, and follow-up.</p>
             </div>
@@ -211,10 +211,10 @@ const Home: React.FC = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-gray-50 py-16">
+      <section className="bg-gray-50 py-24">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-10 text-gray-900">Client Stories</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Client Stories</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6">
             <Testimonial name="Arvind Sharma, Business Owner (Delhi)" text="I had been struggling with a stuck GST refund for over eight months, which was severely affecting my business cash flow. Despite multiple visits to the department and following up with local consultants, there was zero progress. I was skeptical about using an online service, but GSTN Help changed my perspective entirely. Their team immediately identified a technical error in my original application that others had missed. They drafted a precise legal representation and handled the follow-ups professionally. Within just a few weeks of their intervention, the refund was processed and credited. The transparency and expertise they brought were impressive. I can finally focus on growing my business instead of chasing tax authorities. I highly recommend their services to any business owner facing similar delays." />
             <Testimonial name="Viresh Gupta, Freelancer" text="As a freelancer, receiving a GST notice was incredibly stressful. I didn't have a dedicated finance team, and the legal jargon was overwhelming. I reached out to GSTN Help, and they put me at ease immediately. They explained the issue in simple terms, outlined the risks, and proposed a clear strategy. What I appreciated most was their fair and transparent pricing—no hidden costs. They drafted a comprehensive reply addressing every point raised by the officer, and the notice was dropped without penalties. Their communication was prompt, professional, and reassuring throughout. It’s rare to find such high-quality professional support that is also affordable for freelancers. I will definitely use them for all my future compliance needs." />
             <Testimonial name="M. Menon, MSME (Karur)" text="We were facing a departmental audit that raised significant objections regarding our Input Tax Credit (ITC) claims. The discrepancies between our books and GSTR-2A were substantial, and we were looking at a hefty demand with penalties. The team at GSTN Help stepped in and performed a meticulous line-by-line reconciliation. They didn't just match numbers; they identified valid legal grounds to defend the mismatched credits and prepared a solid defense file. Their deep understanding of GST case law and technical reconciliation tools saved us a significant amount of money. They guided us through every query raised by the auditor with confidence. For an MSME like us in Karur, having access to such top-tier GST expertise remotely is a game-changer." />
@@ -223,10 +223,10 @@ const Home: React.FC = () => {
       </section>
 
       {/* Lead Form Section */}
-      <section id="lead-form" className="container mx-auto px-6 py-16">
+      <section id="lead-form" className="container mx-auto px-6 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div className="lg:sticky lg:top-8">
-            <h2 className="text-3xl font-bold text-gray-900">Get a Free GST Issue Review</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Get a Free GST Issue Review</h2>
             <p className="mt-4 text-lg text-gray-600 leading-relaxed">
               Don't let GST notices or refund delays stress you out. Submit your case details below, and our experts will provide a preliminary assessment at no cost.
             </p>
